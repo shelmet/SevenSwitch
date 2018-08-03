@@ -187,10 +187,10 @@ import QuartzCore
     *   The text is centered in the area not covered by the knob.
     */
     open var offLabel: UILabel!
+    open var thumbView: UIView!
     
     // internal
     internal var backgroundView: UIView!
-    internal var thumbView: UIView!
     internal var onImageView: UIImageView!
     internal var offImageView: UIImageView!
     internal var thumbImageView: UIImageView!
