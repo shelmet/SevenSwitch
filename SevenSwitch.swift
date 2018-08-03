@@ -188,6 +188,7 @@ import QuartzCore
     */
     open var offLabel: UILabel!
     open var thumbView: UIView!
+    open var animationDuration: TimeInterval = 0.1
     
     // internal
     internal var backgroundView: UIView!
@@ -435,7 +436,7 @@ import QuartzCore
         let activeKnobWidth = normalKnobWidth + 5
         if animated {
             isAnimating = true
-            UIView.animate(withDuration: 0.3, delay: 0.0, options: [UIViewAnimationOptions.curveEaseOut, UIViewAnimationOptions.beginFromCurrentState], animations: {
+            UIView.animate(withDuration: animationDuration, delay: 0.0, options: [UIViewAnimationOptions.curveEaseOut, UIViewAnimationOptions.beginFromCurrentState], animations: {
                 if self.isTracking {
                     self.thumbView.frame = CGRect(x: self.bounds.size.width - (activeKnobWidth + 1), y: self.thumbView.frame.origin.y, width: activeKnobWidth, height: self.thumbView.frame.size.height)
                 }
@@ -455,7 +456,7 @@ import QuartzCore
             })
             
             let shadowAnim = CABasicAnimation(keyPath: "shadowPath")
-            shadowAnim.duration = 0.3
+            shadowAnim.duration = animationDuration
             shadowAnim.fromValue = thumbView.layer.shadowPath
             shadowAnim.toValue = UIBezierPath(roundedRect: thumbView.bounds, cornerRadius: thumbView.layer.cornerRadius).cgPath
             thumbView.layer.add(shadowAnim, forKey: "shadowPath")
@@ -491,7 +492,7 @@ import QuartzCore
         
         if animated {
             isAnimating = true
-            UIView.animate(withDuration: 0.3, delay: 0.0, options: [UIViewAnimationOptions.curveEaseOut, UIViewAnimationOptions.beginFromCurrentState], animations: {
+            UIView.animate(withDuration: animationDuration, delay: 0.0, options: [UIViewAnimationOptions.curveEaseOut, UIViewAnimationOptions.beginFromCurrentState], animations: {
                 if self.isTracking {
                     self.thumbView.frame = CGRect(x: 1, y: self.thumbView.frame.origin.y, width: activeKnobWidth, height: self.thumbView.frame.size.height);
                     self.backgroundView.backgroundColor = self.activeColor
@@ -513,7 +514,7 @@ import QuartzCore
             })
             
             let shadowAnim = CABasicAnimation(keyPath: "shadowPath")
-            shadowAnim.duration = 0.3
+            shadowAnim.duration = animationDuration
             shadowAnim.fromValue = thumbView.layer.shadowPath
             shadowAnim.toValue = UIBezierPath(roundedRect: thumbView.bounds, cornerRadius: thumbView.layer.cornerRadius).cgPath
             thumbView.layer.add(shadowAnim, forKey: "shadowPath")
